@@ -1,0 +1,54 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node.js": "10.16.0",
+    "npm": "6.9.0"
+  },
+  "scripts": {
+    "test": "mocha ./test/server.js",
+    "start": "node index.js",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "carrefour",
+    "shopping",
+    "cart"
+  ],
+  "author": "Jayakrishna Pedakalam",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "bcrypt": "^3.0.4",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-brute": "^1.0.1",
+    "express-rate-limit": "^5.0.0",
+    "helmet": "^3.21.2",
+    "hsts": "^2.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "mongodb": "^3.3.4",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "nocache": "^2.1.0",
+    "nodemailer": "^6.3.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "rand-token": "^0.4.0",
+    "stripe": "^7.14.0",
+    "swagger-ui-express": "^4.1.2",
+    "swagger-ui-themes": "^2.1.0",
+    "trace_events": "0.0.1",
+    "validator": "^12.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "debug": "^4.1.1",
+    "eslint": "^6.6.0",
+    "mocha": "^6.2.2"
+  }
+}
