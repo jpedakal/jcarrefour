@@ -39,15 +39,16 @@ const cart_data = require('./src/api/user/cart_data');
 const update_pwd = require('./src/api/seller/update_pwd');
 const reset_pwd = require('./src/api/seller/reset_pwd');
 const purchase = require('./src/api/user/purchase');
+const welcome = require('./src/api/user/welcome');
 
 // middleware
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(morgan('dev'));
 app.use(helmet.hidePoweredBy()); // Disable x-powered-by
-app.use(hsts({maxAge: 86400})); // enforces secure (HTTP over SSL/TLS) connections to the server
+app.use(hsts({ maxAge: 86400 })); // enforces secure (HTTP over SSL/TLS) connections to the server
 app.use(nocahe()); // To disable client-side caching
 
 // swagger file
@@ -68,6 +69,7 @@ app.use('/api/user', add_to_cart);
 app.use('/api/user', cart_data);
 app.use('/api/user', purchase);
 app.use('/api/seller', reset_pwd);
+app.use('/', welcome);
 
 
 const Port = process.env.PORT || 3000;
@@ -83,3 +85,4 @@ try {
 } catch (err) {
     console.log('error while connecting database');
 }
+
