@@ -17,12 +17,12 @@ require('./src/config/passport')(passport);
 // Database connection
 const mongo = require('./src/database/mongo_db');
 
-// var privateKey = fs.readFileSync(__dirname+'/ssl/if_addison_api.key');
-// var certificate = fs.readFileSync(__dirname+'/ssl/if-addison-api-cn.crt');
-// var options = {
-//     key: privateKey,
-//     cert: certificate
-// };
+var privateKey = fs.readFileSync(__dirname+'/ssl/server.key');
+var certificate = fs.readFileSync(__dirname+'/ssl/server.crt');
+var options = {
+    key: privateKey,
+    cert: certificate
+};
 
 // route files
 const seller_register = require('./src/api/seller/registration');
@@ -71,15 +71,11 @@ app.use('/api/user', purchase);
 app.use('/api/seller', reset_pwd);
 app.use('/', welcome);
 
-
+// Start server
 const Port = process.env.PORT || 3000;
-//var server = https.createServer(options, app);
+var server = https.createServer(options, app).listen(Port);
 
-app.listen(Port, () => { // start server
-    console.log(`server running on port ${Port}`);
-});
-
-// connect to Database
+// Connect to Database
 try {
     mongo.connect();
 } catch (err) {
