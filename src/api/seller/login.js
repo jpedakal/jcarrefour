@@ -2,16 +2,14 @@ const express = require('express');
 const router = express.Router();
 const mongo = require('../../database/mongo_db');
 const validation = require('../../utils/validator');
-var ExpressBrute = require('express-brute');
+const rateLimit = require('express-rate-limit');
 
-var store = new ExpressBrute.MemoryStore(); // stores state locally, don't use this in production
-var bruteforce = new ExpressBrute(store, {
-    freeRetries: 5,
-    minWait: 1 * 60 * 1000,
-    maxWait: 60 * 60 * 1000
+const apiLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
 });
 
-router.post('/login', bruteforce.prevent, (req, res) => {
+router.post('/login', apiLimiter, (req, res) => {
     const payload = {
         mobile: req.body.mobile,
         password: req.body.password
