@@ -4,6 +4,7 @@ const multer = require('multer');
 const passport = require('passport');
 const isAdmin = require('../../config/admin');
 const validation = require('../../utils/validator');
+const http = require('http');
 
 // var storage = multer.diskStorage({
 //     destination: function (req, file, cb) {
