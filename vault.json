@@ -3,5 +3,6 @@
         "dbname": "carrefour",
         "mongoURL": "mongodb://127.0.0.1:27017/?gssapiServiceName=mongodb"
     },
-    "rule1": 1
+    "rule1": 1,
+    "rule2": 2
 }
